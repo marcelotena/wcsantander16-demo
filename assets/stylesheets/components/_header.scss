@@ -4,7 +4,11 @@
   align-items: center;
   position: relative;
   padding: 10px 30px;
-  height: 120px;
+  @media screen and (max-width: 768px) {
+    padding: 10px 15px;
+  }
+  height: auto;
+  min-height: 120px;
 
   &:before {
     position: absolute;
@@ -13,7 +17,8 @@
     z-index: 0;
     display: block;
     width: 100%;
-    height: 120px;
+    height: 100%;
+    min-height: 120px;
     background-image: url('../img/cropped-palacio-magdalena-1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,7 +31,8 @@
     z-index: 0;
     display: block;
     width: 100%;
-    height: 120px;
+    height: 100%;
+    min-height: 120px;
     background: rgba(210,57,50,.85);
   }
 
@@ -35,15 +41,18 @@
 .site-header-left {
   display: flex;
   flex-flow: row;
+  align-items: center;
 }
 
 .site-header-logo {
   background-image: url('../img/logo_wcsantander-1.png');
   background-repeat: no-repeat;
   background-size: contain;
-  display: flex;
+  background-position: left center;
+  display: block;
   width: 80px;
   height: 80px;
+  min-width: 60px;
   position: relative;
   z-index: 1;
   margin-right: 15px;
@@ -63,6 +72,7 @@
   color: #fff;
   font-weight: 300;
 }
+
 .main-navigation {
   position: relative;
   z-index: 1;
