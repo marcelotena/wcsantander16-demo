@@ -10,7 +10,7 @@ gulp.task('sass', function () {
     return gulp.src('assets/stylesheets/*.scss')
         .pipe(sass({outputStyle: 'compressed', sourceComments: 'map'}, {errLogToConsole: true}))
         .pipe(autoprefixer("last 2 versions", "> 1%", "ie 8", "Android 2", "Firefox ESR"))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('assets/stylesheets/dist/'))
         .pipe(browserSync.stream());
 });
 
