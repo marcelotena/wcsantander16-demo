@@ -1,3 +1,2 @@
-/**
- * Created by marcelotena on 9/10/16.
- */
+angular
+    .module('app', []);
