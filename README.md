@@ -14,7 +14,7 @@ WordPress theme - Single Page Application using AngularJS and the WP REST API.
 2.2. Download node_modules: Navigate to "wp_ng_spa" and execute: npm install
 
 2.3. Open "gulpfile.js" and modify browserSync proxy URL with your local PHP environment URL:
-```
+```JavaScript
 gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function () {
 
     browserSync.init({
