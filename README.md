@@ -2,7 +2,7 @@
 WordPress theme - Single Page Application using AngularJS and the WP REST API.
 
 ## 1. THEME Installation
-1.1. Clone repository to your theme folder
+1.1. Clone repository to your themes folder
 - Navigate to: ../wp-content/themes/ in your WordPress installation.
 - Execute: git clone https://github.com/marcelotena/wcsantander16-demo.git
 

@@ -50,5 +50,5 @@ gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function
 
 
     gulp.watch("assets/stylesheets/**/*.scss", ['sass']);
-    gulp.watch(["assets/js/**/*.js", "assets/js/*.js", "./*.html"], ['concat-scripts', 'reload']);
+    gulp.watch(["assets/js/**/*.js", "assets/js/*.js", "./*.html", "./*.php"], ['concat-scripts', 'reload']);
 });
