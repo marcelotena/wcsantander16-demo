@@ -67,3 +67,24 @@ blockquote, q {
 		content: "";
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.site-title {
+		font-size: 1.2em;
+	}
+	.site-description {
+		font-size: 0.8em;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+.footer-link {
+	color: #fff;
+	&:active,
+	&:visited {
+		color: #fff;
+	}
+}

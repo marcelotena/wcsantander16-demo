@@ -9,7 +9,7 @@ html {
 }
 
 body {
-	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+  background: $color__background-body; /* Fallback for when there is no custom background color defined. */
 }
 
 
@@ -24,6 +24,26 @@ body {
   float: none;
   margin-left: auto;
   margin-right: auto;
+}
+
+.site-main {
+  background: $color__background-body;
+  min-height: 600px;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  background: $color__background-footer;
+  padding: 10px 30px;
+  @media screen and (max-width: 768px) {
+    padding: 10px 15px;
+  }
+  height: auto;
+  min-height: 120px;
 }
 
 /*--------------------------------------------------------------
