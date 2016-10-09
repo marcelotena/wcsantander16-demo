@@ -50,7 +50,7 @@
 
 
             <nav role="navigation" class="site-navigation main-navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'fallback_cb' => false ) ); ?>
             </nav><!-- .site-navigation .main-navigation -->
 
 

@@ -78,6 +78,8 @@ add_action( 'after_setup_theme', 'wp_ng_spa_setup' );
 function wp_ng_spa_scripts() {
 	wp_enqueue_style( 'wp_ng_spa-style', get_stylesheet_uri() );
 
+	wp_enqueue_style( 'wp_ng_spa-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
+
 	wp_enqueue_script( 'wp_ng_spa-dependencies', get_template_directory_uri() . '/assets/js/dependencies.js', array(), '20161009', false );
 
 wp_enqueue_script( 'wp_ng_spa-script', get_template_directory_uri() . '/assets/js/script.js', array(), '20161009', true );

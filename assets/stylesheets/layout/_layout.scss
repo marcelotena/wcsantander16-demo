@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+  background: $color__background-footer; /* Fallback for when there is no custom background color defined. */
 }
 
 
@@ -29,6 +29,9 @@ body {
 .site-main {
   background: $color__background-body;
   min-height: 600px;
+  @media screen and (min-width: 768px) {
+    min-height: 850px;
+  }
 }
 
 .site-footer {
@@ -38,12 +41,29 @@ body {
   position: relative;
 
   background: $color__background-footer;
-  padding: 10px 30px;
+  color: #fff;
+  padding: 10px 30px 60px;
   @media screen and (max-width: 768px) {
     padding: 10px 15px;
   }
   height: auto;
   min-height: 120px;
+}
+
+.site-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  i {
+    margin: 0 5px;
+  }
 }
 
 /*--------------------------------------------------------------

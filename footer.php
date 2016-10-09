@@ -2,7 +2,8 @@
 
 <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="site-info">
-        <a class="footer-link" href="https://2016.santander.wordcamp.org/session/aplicacion-sencilla-con-angularjs-rest-api/" title="<?php esc_attr_e( 'WordCamp Santander 2016', 'wp_ng_spa' ); ?>" rel="generator">Demo para la WordCamp Santander 2016</a>
+        <p class="copyright-footer">Demo WordCamp Santander 2016</p>
+        <a href="https://twitter.com/marcelotena" class="footer-link"><i class="material-icons md-18">person_add</i> @marcelotena</a>
     </div><!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
 </div><!-- #page .hfeed .site -->
