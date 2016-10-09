@@ -26,11 +26,23 @@ gulp.task('concat-dependencies', function () {
         .pipe(sourcemaps.write('./'))
 });
 
-gulp.task('browser-sync', function() {
-
+gulp.task('concat-scripts', function () {
+    return gulp.src([
+        'assets/js/app.js'
+    ])
+        .pipe(sourcemaps.init())
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest('assets/js/'))
+        .pipe(uglify('script.js'))
+        .pipe(gulp.dest('assets/js/'))
+        .pipe(sourcemaps.write('./'))
 });
 
-gulp.task('default', ['sass', 'concat-dependencies'], function () {
+gulp.task('reload', function() {
+    browserSync.reload();
+});
+
+gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function () {
 
     browserSync.init({
         proxy: "ngseries.dev" //modify with your local PHP server
@@ -38,5 +50,5 @@ gulp.task('default', ['sass', 'concat-dependencies'], function () {
 
 
     gulp.watch("assets/stylesheets/**/*.scss", ['sass']);
-    gulp.watch(["assets/js/**/*.js", "./*.html"], browserSync.stream());
+    gulp.watch(["assets/js/**/*.js", "assets/js/*.js", "./*.html"], ['concat-scripts', 'reload']);
 });

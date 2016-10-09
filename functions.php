@@ -90,6 +90,8 @@ function wp_ng_spa_scripts() {
 
 	wp_enqueue_script( 'wp_ng_spa-dependencies', get_template_directory_uri() . '/assets/js/dependencies.js', array(), '20161009', false );
 
+wp_enqueue_script( 'wp_ng_spa-script', get_template_directory_uri() . '/assets/js/script.js', array(), '20161009', true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
