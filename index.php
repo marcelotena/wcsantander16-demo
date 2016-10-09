@@ -16,7 +16,7 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<p>test!</p>
+			<p><span>Ponente: </span>{{speaker}}</p>
 
 		</main>
 	</div>

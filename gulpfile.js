@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
+var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('sass', function () {
     return gulp.src('assets/stylesheets/*.scss')
@@ -28,9 +29,11 @@ gulp.task('concat-dependencies', function () {
 
 gulp.task('concat-scripts', function () {
     return gulp.src([
-        'assets/js/app.js'
+        'assets/js/app.js',
+        'assets/js/MainController.js'
     ])
         .pipe(sourcemaps.init())
+        .pipe(ngAnnotate())
         .pipe(concat('script.js'))
         .pipe(gulp.dest('assets/js/'))
         .pipe(uglify('script.js'))
