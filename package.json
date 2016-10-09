@@ -1,0 +1,37 @@
+{
+  "name": "wp_ng_spa",
+  "version": "1.0.0",
+  "description": "WordPress theme. Single Page Application using AngularJS and the WP REST API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelotena/wcsantander16-demo.git"
+  },
+  "keywords": [
+    "WordPress",
+    "theme",
+    "spa",
+    "angularjs"
+  ],
+  "author": "Marcelo Tena",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/marcelotena/wcsantander16-demo/issues"
+  },
+  "homepage": "https://github.com/marcelotena/wcsantander16-demo#readme",
+  "devDependencies": {
+    "browser-sync": "^2.17.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}
