@@ -49,16 +49,6 @@ function wp_ng_spa_setup() {
 		'menu-1' => esc_html__( 'Top', 'wp_ng_spa' ),
 		) );
 
-	/**
-	 * Add support for core custom logo.
-	 */
-	add_theme_support( 'custom-logo', array(
-		'height'      => 200,
-		'width'       => 200,
-		'flex-width'  => true,
-		'flex-height' => true,
-	) );
-
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.

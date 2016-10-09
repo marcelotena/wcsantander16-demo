@@ -32,10 +32,21 @@
     <body <?php body_class(); ?>>
     <div id="page" class="hfeed site">
         <header id="masthead" class="site-header" role="banner">
-            <hgroup>
-                <h1 class="site-title"><span class="site-header-bubblewrap"><span class="site-header-bubblewrap-inner"><?php bloginfo( 'name' ); ?></span></span></h1>
-                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-            </hgroup>
+            <div class="site-header-left">
+                <div class="site-header-logo">
+
+                </div>
+
+                <hgroup class="site-header-group">
+                    <h1 class="site-title"><span class="site-header-bubblewrap"><span class="site-header-bubblewrap-inner"><?php bloginfo( 'name' ); ?></span></span></h1>
+                    <?php if ($site_description):
+                    echo '<h2 class="site-description">';
+                    bloginfo( 'description' );
+                    echo '</h2>';
+                    endif;
+                    ?>
+                </hgroup>
+            </div>
 
 
             <nav role="navigation" class="site-navigation main-navigation">
