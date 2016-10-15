@@ -27,6 +27,9 @@
         <![endif]-->
 
         <?php wp_head(); ?>
+
+        <base href="/">
+
     </head>
 
     <body <?php body_class(); ?>>
