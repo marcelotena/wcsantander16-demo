@@ -1,0 +1,16 @@
+.series-list {
+  padding-left: 0;
+  margin-left: 0;
+}
+.series-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+  border-top: 1px solid $color__border-list;
+}
+.series-list-item-title {
+  float: left;
+  width: 70%;
+}
