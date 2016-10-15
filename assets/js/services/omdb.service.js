@@ -9,7 +9,7 @@ function OmdbService($http) {
         return $http
             .get(API + cleanedQuery)
             .then(function (response) {
-                return response.data;
+                return response.data['Poster'];
             });
 
     }

@@ -17,7 +17,7 @@ var thumbnailImage = {
                     OmdbService
                         .getImage(ctrl.title)
                         .then(function(response) {
-                            ctrl.image = response['Poster'];
+                            ctrl.image = response;
                         });
                 }
             });
