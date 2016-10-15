@@ -8,7 +8,7 @@ var thumbnailImage = {
         var ctrl = this;
         ctrl.image = '';
 
-        SeriesService
+        /*SeriesService
             .getImageThumbnail(ctrl.id)
             .then(function(response) {
                 ctrl.image = response;
@@ -16,6 +16,21 @@ var thumbnailImage = {
                 if (ctrl.image == 'error') {
                     OmdbService
                         .getImage(ctrl.title)
+                        .then(function(response) {
+                            ctrl.image = response;
+                        });
+                }
+            });*/
+
+        OmdbService
+            .getImage(ctrl.title)
+            .then(function(response) {
+                ctrl.image = response;
+                console.log(ctrl.image);
+            }).then(function () {
+                if (ctrl.image == 'N/A') {
+                    SeriesService
+                        .getImageThumbnail(ctrl.id)
                         .then(function(response) {
                             ctrl.image = response;
                         });
