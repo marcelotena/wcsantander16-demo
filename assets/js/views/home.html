@@ -6,6 +6,7 @@
     <div class="view-inner-content">
         <ul class="series-list">
             <li class="series-list-item" ng-repeat="item in ctrl.list">
+                <thumbnail-image title="item.title" id="item.id"></thumbnail-image>
                 <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
             </li>
         </ul>

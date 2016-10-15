@@ -34,6 +34,7 @@ gulp.task('concat-scripts', function () {
         'assets/js/app.js',
         'assets/js/router.config.js',
         'assets/js/views/HomeController.js',
+        'assets/js/components/thumbnail-image.js',
         'assets/js/services/series.service.js',
         'assets/js/services/omdb.service.js'
     ])

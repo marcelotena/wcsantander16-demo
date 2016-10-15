@@ -14,8 +14,9 @@ function HomeController (SeriesService) {
         return data.map(function (item) {
 
             var itemImage = 0;
+            var processedItem;
 
-            var processedItem = {
+            processedItem = {
                 id              : item.id,
                 date            : item.date,
                 link            : item.link,

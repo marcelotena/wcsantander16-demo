@@ -19,8 +19,25 @@ function SeriesService($http) {
             });
     }
 
+    function getImageThumbnail(id) {
+
+        return $http
+            .get(API + '/' + id)
+            .then(function (response) {
+                if (response.data['better_featured_image']) {
+                    return response.data['better_featured_image']['media_details'].sizes.thumbnail['source_url'];
+                } else {
+                    return 'error';
+                }
+            }, function(error) {
+                // No featured image uploaded to item.
+            });
+
+    }
+
     return {
-        getSeries: getSeries
+        getSeries: getSeries,
+        getImageThumbnail: getImageThumbnail
     }
 }
 
