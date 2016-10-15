@@ -56,4 +56,4 @@
 
         </header><!-- #masthead .site-header -->
 
-        <div id="main" ng-controller="MainController">
+        <div id="main" ng-controller="MainController as series">

@@ -16,7 +16,11 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-
+			<ul class="series-list">
+				<li class="series-list-item" ng-repeat="item in series.list">
+					<h3 class="series-list-item-title" ng-bind-html="item.title.rendered"></h3>
+				</li>
+			</ul>
 
 		</main>
 	</div>

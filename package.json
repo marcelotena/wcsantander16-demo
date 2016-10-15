@@ -33,6 +33,7 @@
     "gulp-uglify": "^2.0.0"
   },
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-sanitize": "^1.5.8"
   }
 }

@@ -17,7 +17,8 @@ gulp.task('sass', function () {
 
 gulp.task('concat-dependencies', function () {
     return gulp.src([
-        'node_modules/angular/angular.js'
+        'node_modules/angular/angular.js',
+        'node_modules/angular-sanitize/angular-sanitize.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('dependencies.js'))
@@ -30,7 +31,8 @@ gulp.task('concat-dependencies', function () {
 gulp.task('concat-scripts', function () {
     return gulp.src([
         'assets/js/app.js',
-        'assets/js/MainController.js'
+        'assets/js/MainController.js',
+        'assets/js/services/series.service.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(ngAnnotate())
