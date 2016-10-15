@@ -34,7 +34,8 @@ gulp.task('concat-scripts', function () {
         'assets/js/app.js',
         'assets/js/router.config.js',
         'assets/js/views/HomeController.js',
-        'assets/js/services/series.service.js'
+        'assets/js/services/series.service.js',
+        'assets/js/services/omdb.service.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(ngAnnotate())
@@ -57,5 +58,11 @@ gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function
 
 
     gulp.watch("assets/stylesheets/**/*.scss", ['sass']);
-    gulp.watch(["assets/js/**/*.js", "assets/js/*.js", "./*.html", "./*.php"], ['concat-scripts', 'reload']);
+    gulp.watch([
+        "assets/js/**/*.js",
+        "assets/js/*.js",
+        "./*.html",
+        "assets/js/**/*.html",
+        "./*.php"
+    ], ['concat-scripts', 'reload']);
 });

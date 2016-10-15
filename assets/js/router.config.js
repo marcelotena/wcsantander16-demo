@@ -7,7 +7,7 @@ angular
         $stateProvider
             .state('inicio', {
                 url: '/',
-                controller: 'HomeController as series',
+                controller: 'HomeController as ctrl',
                 templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/views/home.html'
             });
 

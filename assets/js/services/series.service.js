@@ -16,7 +16,7 @@ function SeriesService($http) {
             .get(request + page)
             .then(function (response) {
                 return response.data;
-        });
+            });
     }
 
     return {

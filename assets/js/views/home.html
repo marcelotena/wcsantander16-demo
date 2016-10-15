@@ -1,5 +1,13 @@
-<ul class="series-list">
-    <li class="series-list-item" ng-repeat="item in series.list">
-        <h3 class="series-list-item-title" ng-bind-html="item.title.rendered"></h3>
-    </li>
-</ul>
+<div class="view-inner-container">
+    <div class="view-inner-header">
+        <h2 class="view-title">Lista de series</h2>
+        <p class="view-subtitle"></p>
+    </div>
+    <div class="view-inner-content">
+        <ul class="series-list">
+            <li class="series-list-item" ng-repeat="item in ctrl.list">
+                <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
+            </li>
+        </ul>
+    </div>
+</div>
