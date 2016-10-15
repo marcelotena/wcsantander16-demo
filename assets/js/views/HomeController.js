@@ -1,4 +1,4 @@
-function MainController (SeriesService) {
+function HomeController (SeriesService) {
     var ctrl = this;
     this.list = [];
 
@@ -15,4 +15,4 @@ function MainController (SeriesService) {
 
 angular
     .module('app')
-    .controller('MainController', MainController);
+    .controller('HomeController', HomeController);
