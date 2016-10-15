@@ -89,3 +89,69 @@ wp_enqueue_script( 'wp_ng_spa-script', get_template_directory_uri() . '/assets/j
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wp_ng_spa_scripts' );
+
+
+/**
+* Register custom post type: Serie.
+*/
+function cpt_series() {
+
+$labels = array(
+'name'                  => _x( 'Series', 'Post Type General Name', 'wp_ng_spa' ),
+'singular_name'         => _x( 'Serie', 'Post Type Singular Name', 'wp_ng_spa' ),
+'menu_name'             => __( 'Series', 'wp_ng_spa' ),
+'name_admin_bar'        => __( 'Serie', 'wp_ng_spa' ),
+'archives'              => __( 'Serieteca', 'wp_ng_spa' ),
+'parent_item_colon'     => __( 'Serie padre:', 'wp_ng_spa' ),
+'all_items'             => __( 'Todas las series', 'wp_ng_spa' ),
+'add_new_item'          => __( 'Añadir nueva serie', 'wp_ng_spa' ),
+'add_new'               => __( 'Añadir nueva', 'wp_ng_spa' ),
+'new_item'              => __( 'Nueva serie', 'wp_ng_spa' ),
+'edit_item'             => __( 'Editar serie', 'wp_ng_spa' ),
+'update_item'           => __( 'Actualizar serie', 'wp_ng_spa' ),
+'view_item'             => __( 'Ver serie', 'wp_ng_spa' ),
+'search_items'          => __( 'Buscar serie', 'wp_ng_spa' ),
+'not_found'             => __( 'No se han encontrado series', 'wp_ng_spa' ),
+'not_found_in_trash'    => __( 'No se han encontrado series en la papelera', 'wp_ng_spa' ),
+'featured_image'        => __( 'Imagen destacada', 'wp_ng_spa' ),
+'set_featured_image'    => __( 'Establecer imagen destacada', 'wp_ng_spa' ),
+'remove_featured_image' => __( 'Quitar imagen destacada', 'wp_ng_spa' ),
+'use_featured_image'    => __( 'Usar como imagen destacada', 'wp_ng_spa' ),
+'insert_into_item'      => __( 'Insertar en serie', 'wp_ng_spa' ),
+'uploaded_to_this_item' => __( 'Subido a esta serie', 'wp_ng_spa' ),
+'items_list'            => __( 'Lista de series', 'wp_ng_spa' ),
+'items_list_navigation' => __( 'Navegación en lista de series', 'wp_ng_spa' ),
+'filter_items_list'     => __( 'Filtrar lista de series', 'wp_ng_spa' ),
+);
+$args = array(
+'label'                 => __( 'Serie', 'wp_ng_spa' ),
+'description'           => __( 'Post personalizado: Serie de TV.', 'wp_ng_spa' ),
+'labels'                => $labels,
+'supports'              => array( 'title', 'editor', 'author', 'thumbnail' ),
+'taxonomies'            => array( 'category', 'post_tag' ),
+'hierarchical'          => false,
+'public'                => true,
+'show_ui'               => true,
+'show_in_menu'          => true,
+'menu_position'         => 5,
+'show_in_admin_bar'     => true,
+'show_in_nav_menus'     => true,
+'menu_icon'				=> 'dashicons-format-video',
+'can_export'            => true,
+'has_archive'           => true,
+'exclude_from_search'   => false,
+'publicly_queryable'    => true,
+'capability_type'       => 'page',
+'show_in_rest'			=> true,
+'rest_base'				=> 'series'
+);
+register_post_type( 'series', $args );
+
+}
+add_action( 'init', 'cpt_series', 0 );
+
+function my_rewrite_flush() {
+	cpt_series();
+	flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'my_rewrite_flush' );
