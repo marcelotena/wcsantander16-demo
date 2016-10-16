@@ -19,7 +19,8 @@ gulp.task('concat-dependencies', function () {
     return gulp.src([
         'node_modules/angular/angular.js',
         'node_modules/angular-sanitize/angular-sanitize.js',
-        'node_modules/angular-ui-router/release/angular-ui-router.js'
+        'node_modules/angular-ui-router/release/angular-ui-router.js',
+        'node_modules/ng-infinite-scroll/build/ng-infinite-scroll.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('dependencies.js'))
@@ -32,8 +33,8 @@ gulp.task('concat-dependencies', function () {
 gulp.task('concat-scripts', function () {
     return gulp.src([
         'assets/js/app.js',
-        'assets/js/router.config.js',
-        'assets/js/views/HomeController.js',
+        'assets/js/components/home/home.js',
+        'assets/js/components/home/home.component.js',
         'assets/js/components/thumbnail.component.js',
         'assets/js/services/series.service.js',
         'assets/js/services/omdb.service.js',
@@ -43,7 +44,7 @@ gulp.task('concat-scripts', function () {
         .pipe(ngAnnotate())
         .pipe(concat('script.js'))
         .pipe(gulp.dest('assets/js/'))
-        .pipe(uglify('script.js'))
+        //.pipe(uglify('script.js'))
         .pipe(gulp.dest('assets/js/'))
         .pipe(sourcemaps.write('./'))
 });
@@ -62,6 +63,7 @@ gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function
     gulp.watch("assets/stylesheets/**/*.scss", ['sass']);
     gulp.watch([
         "assets/js/**/*.js",
+        "assets/js/**/**/*.js",
         "assets/js/*.js",
         "./*.html",
         "assets/js/**/*.html",

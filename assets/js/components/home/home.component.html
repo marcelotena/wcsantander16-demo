@@ -1,14 +1,17 @@
 <div class="view-inner-container">
+{{vm | json}}
     <div class="view-inner-header">
         <h2 class="view-title">Lista de series</h2>
         <p class="view-subtitle"></p>
     </div>
+
     <div class="view-inner-content">
-        <ul class="series-list">
-            <li class="series-list-item" ng-repeat="item in ctrl.list">
+        <ul class="series-list" infinite-scroll="$ctrl.loadMorePages()">
+            <li class="series-list-item" ng-repeat="item in $ctrl.list">
                 <thumbnail title="item.title" id="item.image"></thumbnail>
                 <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
             </li>
         </ul>
     </div>
+
 </div>

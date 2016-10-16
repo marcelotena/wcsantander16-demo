@@ -1,1 +1,218 @@
-function HomeController(e){function t(){e.getSeries().then(function(e){i.list=e})}var i=this;i.list=[],t()}function SeriesService(e){function t(t){return t?o=a:(o=r,t=""),e.get(o+t).then(function(e){return i(e.data)})}function i(e){return e.map(function(e){var t;return t={id:e.id,date:e.date,link:e.link,title:e.title.rendered,spanishTitle:e.acf.titulo_traducido,slug:e.slug,content:e.content.rendered,image:e.featured_media}})}function n(t){return e.get(r+"/"+t).then(function(e){return e.data.better_featured_image.media_details.sizes.thumbnail.source_url})}var r="wp-json/wp/v2/series",a="wp-json/wp/v2/series?page=",o="";return{getSeries:t,getImageThumbnail:n}}function OmdbService(e){function t(t){var n=t.split(" ").join("+");return e.get(i+n).then(function(e){return e.data.Poster})}var i="http://www.omdbapi.com/?t=";return{getImage:t}}function MediaService(e){function t(t){return e.get(n+"/"+t).then(function(e){return i(e.data)})}function i(e){var t;return t={id:e.id,date:e.date,link:e.link,title:e.title.rendered,alt:e.alt_text,spanishTitle:e.acf.titulo_traducido,slug:e.slug,type:e.media_type,sizes:{thumbnail:e.media_details.sizes.thumbnail.source_url,medium:e.media_details.sizes.medium.source_url,mediumLarge:e.media_details.sizes.medium_large.source_url,large:e.media_details.sizes.large.source_url}}}var n="wp-json/wp/v2/media";return{getMediaItem:t}}angular.module("app",["ngSanitize","ui.router"]),angular.module("app").config(["$stateProvider","$urlRouterProvider","$locationProvider",function(e,t,i){i.html5Mode(!0),e.state("inicio",{url:"/",controller:"HomeController as ctrl",templateUrl:"wp-content/themes/wp_ng_spa/assets/js/views/home.html"}),t.otherwise("/")}]),HomeController.$inject=["SeriesService"],angular.module("app").controller("HomeController",HomeController);var thumbnail={bindings:{title:"<",id:"<"},controller:function(e,t){var i=this;i.image="",i.id?t.getMediaItem(i.id).then(function(e){i.image=e.sizes.thumbnail}):e.getImage(i.title).then(function(e){i.image=e})},templateUrl:"wp-content/themes/wp_ng_spa/assets/js/components/thumbnail.component.html"};thumbnail.$inject=["OmdbService","MediaService"],angular.module("app").component("thumbnail",thumbnail),SeriesService.$inject=["$http"],angular.module("app").factory("SeriesService",SeriesService),OmdbService.$inject=["$http"],angular.module("app").factory("OmdbService",OmdbService),MediaService.$inject=["$http"],angular.module("app").factory("MediaService",MediaService);
+angular
+    .module('app', [
+        'ngSanitize',
+        'ui.router',
+        'infinite-scroll',
+        'home'
+    ]);
+angular
+    .module('home', []);
+var home = {
+    bindings: {
+        list: '<'
+    },
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/home/home.component.html'
+};
+
+angular
+    .module('home')
+    .component('home', home)
+    .config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+        $locationProvider.html5Mode(true);
+
+        $stateProvider
+            .state('home', {
+                url: '/',
+                component: 'home',
+                resolve: {
+                    list: ["SeriesService", function(SeriesService) {
+                        return SeriesService.getSeries();
+                    }]
+                }
+            });
+
+        $urlRouterProvider.otherwise('/');
+    }]);
+var thumbnail = {
+    bindings: {
+        title: '<',
+        id: '<'
+    },
+    controller: function (OmdbService, MediaService) {
+
+        var ctrl = this;
+        ctrl.image = '';
+
+        if (ctrl.id) {
+
+            MediaService
+                .getMediaItem(ctrl.id)
+                .then(function(response) {
+                    ctrl.image = response['sizes']['thumbnail'];
+                });
+
+        } else {
+
+            OmdbService
+                .getImage(ctrl.title)
+                .then(function(response) {
+                    ctrl.image = response;
+                });
+
+        }
+
+
+    },
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/thumbnail.component.html'
+};
+
+thumbnail.$inject = ['OmdbService', 'MediaService'];
+
+angular
+    .module('app')
+    .component('thumbnail', thumbnail);
+
+SeriesService.$inject = ["$http"];function SeriesService($http) {
+
+    var API = 'wp-json/wp/v2/series';
+    var pagedAPI = 'wp-json/wp/v2/series?page=';
+    var request = '';
+
+    function getSeries(page) {
+
+        if (page) {
+            request = pagedAPI;
+        } else {
+            request = API;
+            page = '';
+        }
+
+        return $http
+            .get(request + page)
+            .then(function (response) {
+                return processSeriesList(response.data);
+            });
+
+    }
+
+    function processSeriesList(data) {
+
+        return data.map(function (item) {
+
+            var processedItem;
+
+            processedItem = {
+                id              : item.id,
+                date            : item.date,
+                link            : item.link,
+                title           : item.title.rendered,
+                spanishTitle    : item.acf['titulo_traducido'],
+                slug            : item.slug,
+                content         : item.content.rendered,
+                image           : item['featured_media']
+            };
+
+            return processedItem;
+        });
+
+    }
+
+    // getImageThumbnail when using the plugin Better REST Featured Images
+    function getImageThumbnail(id) {
+
+        return $http
+            .get(API + '/' + id)
+            .then(function (response) {
+                return response.data['better_featured_image']['media_details'].sizes.thumbnail['source_url'];
+            });
+
+    }
+
+    return {
+        getSeries: getSeries,
+        getImageThumbnail: getImageThumbnail
+    }
+}
+
+
+angular
+    .module('home')
+    .factory('SeriesService', SeriesService);
+
+OmdbService.$inject = ["$http"];function OmdbService($http) {
+
+    var API = 'http://www.omdbapi.com/?t=';
+
+    function getImage(query) {
+
+        var cleanedQuery = query.split(' ').join('+');
+
+        return $http
+            .get(API + cleanedQuery)
+            .then(function (response) {
+                return response.data['Poster'];
+            });
+
+    }
+
+    return {
+        getImage: getImage
+    }
+}
+
+
+angular
+    .module('app')
+    .factory('OmdbService', OmdbService);
+
+MediaService.$inject = ["$http"];function MediaService($http) {
+
+    var API = 'wp-json/wp/v2/media';
+
+    function getMediaItem(id) {
+
+        return $http
+            .get(API + '/' + id)
+            .then(function (response) {
+                return processMediaItem(response.data);
+            });
+
+    }
+
+    function processMediaItem(item) {
+
+            var processedItem;
+
+            processedItem = {
+                id              : item.id,
+                date            : item.date,
+                link            : item.link,
+                title           : item.title.rendered,
+                alt             : item['alt_text'],
+                spanishTitle    : item.acf['titulo_traducido'],
+                slug            : item.slug,
+                type            : item['media_type'],
+                sizes           : {
+                    thumbnail   : item['media_details'].sizes.thumbnail['source_url'],
+                    medium      : item['media_details'].sizes.medium['source_url'],
+                    mediumLarge : item['media_details'].sizes['medium_large']['source_url'],
+                    large       : item['media_details'].sizes['large']['source_url']
+                }
+            };
+
+            return processedItem;
+
+    }
+
+
+
+    return {
+        getMediaItem: getMediaItem
+    }
+}
+
+
+angular
+    .module('app')
+    .factory('MediaService', MediaService);

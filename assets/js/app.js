@@ -1,5 +1,7 @@
 angular
     .module('app', [
         'ngSanitize',
-        'ui.router'
+        'ui.router',
+        'infinite-scroll',
+        'home'
     ]);

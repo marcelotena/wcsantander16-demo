@@ -43,6 +43,7 @@ function SeriesService($http) {
 
     }
 
+    // getImageThumbnail when using the plugin Better REST Featured Images
     function getImageThumbnail(id) {
 
         return $http
@@ -61,5 +62,5 @@ function SeriesService($http) {
 
 
 angular
-    .module('app')
+    .module('home')
     .factory('SeriesService', SeriesService);
