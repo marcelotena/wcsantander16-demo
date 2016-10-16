@@ -36,7 +36,8 @@ gulp.task('concat-scripts', function () {
         'assets/js/views/HomeController.js',
         'assets/js/components/thumbnail-image.js',
         'assets/js/services/series.service.js',
-        'assets/js/services/omdb.service.js'
+        'assets/js/services/omdb.service.js',
+        'assets/js/services/media.service.js'
     ])
         .pipe(sourcemaps.init())
         .pipe(ngAnnotate())

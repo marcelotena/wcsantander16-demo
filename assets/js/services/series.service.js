@@ -5,6 +5,7 @@ function SeriesService($http) {
     var request = '';
 
     function getSeries(page) {
+
         if (page) {
             request = pagedAPI;
         } else {
@@ -17,9 +18,11 @@ function SeriesService($http) {
             .then(function (response) {
                 return processSeriesList(response.data);
             });
+
     }
 
     function processSeriesList(data) {
+
         return data.map(function (item) {
 
             var processedItem;
@@ -37,6 +40,7 @@ function SeriesService($http) {
 
             return processedItem;
         });
+
     }
 
     function getImageThumbnail(id) {
@@ -44,13 +48,7 @@ function SeriesService($http) {
         return $http
             .get(API + '/' + id)
             .then(function (response) {
-                if (response.data['better_featured_image']) {
-                    return response.data['better_featured_image']['media_details'].sizes.thumbnail['source_url'];
-                } else {
-                    return 'error';
-                }
-            }, function(error) {
-                // No featured image uploaded to item.
+                return response.data['better_featured_image']['media_details'].sizes.thumbnail['source_url'];
             });
 
     }
