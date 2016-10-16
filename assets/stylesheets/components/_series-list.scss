@@ -7,10 +7,11 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 15px 30px;
-  border-top: 1px solid $color__border-list;
+  background: $color__background-row;
+
+  margin: 5px 0;
 }
 .series-list-item-title {
   float: left;
-  width: 70%;
+  width: 80%;
 }
