@@ -10,8 +10,25 @@
   background: $color__background-row;
 
   margin: 5px 0;
+  transition: all ease-in-out 0.3s;
+
+  &-active {
+    background: $color__background-header;
+
+    .series-list-item-title {
+      color: white;
+    }
+
+    .star-rating-list-item {
+      i {
+        color: $color__star-darkbg;
+      }
+    }
+  }
 }
 .series-list-item-title {
   float: left;
   width: 60%;
+
+  color: $color__background-header;
 }

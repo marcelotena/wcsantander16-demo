@@ -3,11 +3,12 @@
     <div class="view-inner-header">
         <h2 class="view-title">Lista de series</h2>
         <p class="view-subtitle"></p>
+        <button ng-click="$ctrl.activeClass = false;">RESET</button>
     </div>
 
     <div class="view-inner-content">
         <ul class="series-list" infinite-scroll="$ctrl.loadMorePages()" infinite-scroll-disabled="$ctrl.busy" infinite-scroll-distance="0">
-            <li class="series-list-item" ng-repeat="item in $ctrl.list">
+            <li class="series-list-item" ng-repeat="item in $ctrl.list" ng-class="{'series-list-item-active': ($ctrl.activeClass[item.id] === true)}" ng-click="$ctrl.activeClass[item.id] = true;">
                 <thumbnail title="item.title" id="item.image"></thumbnail>
                 <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
                 <rating title="item.title"></rating>
