@@ -10,11 +10,14 @@ var thumbnail = {
 
         if (ctrl.id) {
 
-            MediaService
-                .getMediaItem(ctrl.id)
-                .then(function(response) {
-                    ctrl.image = response['sizes']['thumbnail'];
-                });
+            if(MediaService) {
+                MediaService
+                    .getMediaItem(ctrl.id)
+                    .then(function(response) {
+                        ctrl.image = response['sizes']['thumbnail'];
+                    });
+            }
+
 
         } else {
 
@@ -31,7 +34,6 @@ var thumbnail = {
     templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/thumbnail.component.html'
 };
 
-thumbnail.$inject = ['OmdbService', 'MediaService'];
 
 angular
     .module('app')

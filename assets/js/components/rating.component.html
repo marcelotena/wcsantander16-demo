@@ -1,0 +1,27 @@
+<ul class="star-rating-list" title="{{$ctrl.rating.value}}">
+    <li class="star-rating-list-item">
+        <i class="material-icons md-24 star-empty" ng-show="$ctrl.rating.stars == 0">star_border</i>
+        <i class="material-icons md-24 star-half" ng-show="$ctrl.rating.stars == 0.5">star_half</i>
+        <i class="material-icons md-24 star-full" ng-show="$ctrl.rating.stars > 0.5">star_rate</i>
+    </li>
+    <li class="star-rating-list-item">
+        <i class="material-icons md-24 star-empty" ng-show="$ctrl.rating.stars <= 1">star_border</i>
+        <i class="material-icons md-24 star-half" ng-show="$ctrl.rating.stars == 1.5">star_half</i>
+        <i class="material-icons md-24 star-full" ng-show="$ctrl.rating.stars > 1.5">star_rate</i>
+    </li>
+    <li class="star-rating-list-item">
+        <i class="material-icons md-24 star-empty" ng-show="$ctrl.rating.stars <= 2">star_border</i>
+        <i class="material-icons md-24 star-half" ng-show="$ctrl.rating.stars == 2.5">star_half</i>
+        <i class="material-icons md-24 star-full" ng-show="$ctrl.rating.stars > 2.5">star_rate</i>
+    </li>
+    <li class="star-rating-list-item">
+        <i class="material-icons md-24 star-empty" ng-show="$ctrl.rating.stars <= 3">star_border</i>
+        <i class="material-icons md-24 star-half" ng-show="$ctrl.rating.stars == 3.5">star_half</i>
+        <i class="material-icons md-24 star-full" ng-show="$ctrl.rating.stars > 3.5">star_rate</i>
+    </li>
+    <li class="star-rating-list-item">
+        <i class="material-icons md-24 star-empty" ng-show="$ctrl.rating.stars <= 4">star_border</i>
+        <i class="material-icons md-24 star-half" ng-show="$ctrl.rating.stars == 4.5">star_half</i>
+        <i class="material-icons md-24 star-full" ng-show="$ctrl.rating.stars > 4.5">star_rate</i>
+    </li>
+</ul>

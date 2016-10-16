@@ -70,11 +70,14 @@ var thumbnail = {
 
         if (ctrl.id) {
 
-            MediaService
-                .getMediaItem(ctrl.id)
-                .then(function(response) {
-                    ctrl.image = response['sizes']['thumbnail'];
-                });
+            if(MediaService) {
+                MediaService
+                    .getMediaItem(ctrl.id)
+                    .then(function(response) {
+                        ctrl.image = response['sizes']['thumbnail'];
+                    });
+            }
+
 
         } else {
 
@@ -91,11 +94,42 @@ var thumbnail = {
     templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/thumbnail.component.html'
 };
 
-thumbnail.$inject = ['OmdbService', 'MediaService'];
 
 angular
     .module('app')
     .component('thumbnail', thumbnail);
+var rating = {
+    bindings: {
+        title: '<'
+    },
+    controller: function (OmdbService) {
+
+        var ctrl = this;
+        ctrl.stars = '';
+
+        OmdbService
+            .getRating(ctrl.title)
+            .then(function(response) {
+                ctrl.stars = response;
+                ctrl.rating = {
+                    value: response,
+                    stars: round(response/10*5, 0.5)
+                }
+            });
+
+        function round(value, step) {
+            step || (step = 1.0);
+            var inv = 1.0 / step;
+            return Math.round(value * inv) / inv;
+        }
+
+    },
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/rating.component.html'
+};
+
+angular
+    .module('app')
+    .component('rating', rating);
 
 SeriesService.$inject = ["$http"];function SeriesService($http) {
 
@@ -182,8 +216,21 @@ OmdbService.$inject = ["$http"];function OmdbService($http) {
 
     }
 
+    function getRating(query) {
+
+        var cleanedQuery = query.split(' ').join('+');
+
+        return $http
+            .get(API + cleanedQuery)
+            .then(function (response) {
+                return response.data['imdbRating'];
+            });
+
+    }
+
     return {
-        getImage: getImage
+        getImage: getImage,
+        getRating: getRating
     }
 }
 
@@ -220,8 +267,8 @@ MediaService.$inject = ["$http"];function MediaService($http) {
                 slug            : item.slug,
                 type            : item['media_type'],
                 sizes           : {
-                    thumbnail   : item['media_details'].sizes.thumbnail['source_url'],
-                    medium      : item['media_details'].sizes.medium['source_url'],
+                    thumbnail   : item['media_details'].sizes['thumbnail']['source_url'],
+                    medium      : item['media_details'].sizes['medium']['source_url'],
                     mediumLarge : item['media_details'].sizes['medium_large']['source_url'],
                     large       : item['media_details'].sizes['large']['source_url']
                 }
@@ -240,5 +287,5 @@ MediaService.$inject = ["$http"];function MediaService($http) {
 
 
 angular
-    .module('app')
+    .module('home')
     .factory('MediaService', MediaService);

@@ -26,8 +26,8 @@ function MediaService($http) {
                 slug            : item.slug,
                 type            : item['media_type'],
                 sizes           : {
-                    thumbnail   : item['media_details'].sizes.thumbnail['source_url'],
-                    medium      : item['media_details'].sizes.medium['source_url'],
+                    thumbnail   : item['media_details'].sizes['thumbnail']['source_url'],
+                    medium      : item['media_details'].sizes['medium']['source_url'],
                     mediumLarge : item['media_details'].sizes['medium_large']['source_url'],
                     large       : item['media_details'].sizes['large']['source_url']
                 }
@@ -46,5 +46,5 @@ function MediaService($http) {
 
 
 angular
-    .module('app')
+    .module('home')
     .factory('MediaService', MediaService);

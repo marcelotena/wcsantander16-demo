@@ -14,8 +14,21 @@ function OmdbService($http) {
 
     }
 
+    function getRating(query) {
+
+        var cleanedQuery = query.split(' ').join('+');
+
+        return $http
+            .get(API + cleanedQuery)
+            .then(function (response) {
+                return response.data['imdbRating'];
+            });
+
+    }
+
     return {
-        getImage: getImage
+        getImage: getImage,
+        getRating: getRating
     }
 }
 

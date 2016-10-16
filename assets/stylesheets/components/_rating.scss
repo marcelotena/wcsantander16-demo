@@ -1,0 +1,15 @@
+.star-rating-list {
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 15px;
+  width: 125px;
+}
+
+.star-rating-list-item {
+  float: left;
+  width: 25px;
+  i {
+    color: $color__background-header;
+  }
+}

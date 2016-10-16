@@ -10,6 +10,7 @@
             <li class="series-list-item" ng-repeat="item in $ctrl.list">
                 <thumbnail title="item.title" id="item.image"></thumbnail>
                 <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
+                <rating title="item.title"></rating>
             </li>
             <li class="series-list-loading" ng-show="$ctrl.busy">CARGANDO...</li>
         </ul>
