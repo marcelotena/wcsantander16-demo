@@ -16,12 +16,13 @@ function SeriesService($http) {
         return $http
             .get(request + page)
             .then(function (response) {
-                return processSeriesList(response.data);
+                var totalPages = response.headers('X-WP-TotalPages');
+                return processSeriesList(response.data, totalPages);
             });
 
     }
 
-    function processSeriesList(data) {
+    function processSeriesList(data, totalPages) {
 
         return data.map(function (item) {
 
@@ -35,7 +36,8 @@ function SeriesService($http) {
                 spanishTitle    : item.acf['titulo_traducido'],
                 slug            : item.slug,
                 content         : item.content.rendered,
-                image           : item['featured_media']
+                image           : item['featured_media'],
+                totalPages      : totalPages
             };
 
             return processedItem;

@@ -11,7 +11,31 @@ var home = {
     bindings: {
         list: '<'
     },
-    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/home/home.component.html'
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/home/home.component.html',
+    controller: function(SeriesService) {
+        var ctrl = this;
+        var currentPage = 2;
+        var pageLimit = 5;
+        ctrl.busy = false;
+
+        ctrl.loadMorePages = function () {
+
+            if (currentPage <= pageLimit) {
+                ctrl.busy = true;
+
+                SeriesService
+                    .getSeries(currentPage)
+                    .then(function(response) {
+                        currentPage++;
+                        pageLimit = response[0].totalPages;
+                        ctrl.list = ctrl.list.concat(response);
+                        ctrl.busy = false;
+                    });
+
+            }
+
+        };
+    }
 };
 
 angular
@@ -91,12 +115,13 @@ SeriesService.$inject = ["$http"];function SeriesService($http) {
         return $http
             .get(request + page)
             .then(function (response) {
-                return processSeriesList(response.data);
+                var totalPages = response.headers('X-WP-TotalPages');
+                return processSeriesList(response.data, totalPages);
             });
 
     }
 
-    function processSeriesList(data) {
+    function processSeriesList(data, totalPages) {
 
         return data.map(function (item) {
 
@@ -110,7 +135,8 @@ SeriesService.$inject = ["$http"];function SeriesService($http) {
                 spanishTitle    : item.acf['titulo_traducido'],
                 slug            : item.slug,
                 content         : item.content.rendered,
-                image           : item['featured_media']
+                image           : item['featured_media'],
+                totalPages      : totalPages
             };
 
             return processedItem;
