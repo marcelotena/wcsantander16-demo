@@ -26,7 +26,6 @@ var thumbnailImage = {
             .getImage(ctrl.title)
             .then(function(response) {
                 ctrl.image = response;
-                console.log(ctrl.image);
             }).then(function () {
                 if (ctrl.image == 'N/A') {
                     SeriesService

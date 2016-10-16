@@ -15,8 +15,28 @@ function SeriesService($http) {
         return $http
             .get(request + page)
             .then(function (response) {
-                return response.data;
+                return processSeriesList(response.data);
             });
+    }
+
+    function processSeriesList(data) {
+        return data.map(function (item) {
+
+            var processedItem;
+
+            processedItem = {
+                id              : item.id,
+                date            : item.date,
+                link            : item.link,
+                title           : item.title.rendered,
+                spanishTitle    : item.acf['titulo_traducido'],
+                slug            : item.slug,
+                content         : item.content.rendered,
+                image           : item['featured_media']
+            };
+
+            return processedItem;
+        });
     }
 
     function getImageThumbnail(id) {

@@ -6,29 +6,9 @@ function HomeController (SeriesService) {
         SeriesService
             .getSeries()
             .then(function (response) {
-                ctrl.list = processData(response);
+                ctrl.list = response;
+                console.log(ctrl.list);
             });
-    }
-
-    function processData(data) {
-        return data.map(function (item) {
-
-            var itemImage = 0;
-            var processedItem;
-
-            processedItem = {
-                id              : item.id,
-                date            : item.date,
-                link            : item.link,
-                title           : item.title.rendered,
-                spanishTitle    : item.acf['titulo_traducido'],
-                slug            : item.slug,
-                content         : item.content.rendered,
-                image           : itemImage
-            };
-
-            return processedItem;
-        });
     }
 
     loadSeries();
