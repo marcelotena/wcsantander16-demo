@@ -1,5 +1,4 @@
-var thumbnailImage = {
-    scope: {},
+var thumbnail = {
     bindings: {
         title: '<',
         id: '<'
@@ -29,11 +28,11 @@ var thumbnailImage = {
 
 
     },
-    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/thumbnail-image.html'
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/thumbnail.component.html'
 };
 
-thumbnailImage.$inject = ['OmdbService', 'MediaService'];
+thumbnail.$inject = ['OmdbService', 'MediaService'];
 
 angular
     .module('app')
-    .component('thumbnailImage', thumbnailImage);
+    .component('thumbnail', thumbnail);
