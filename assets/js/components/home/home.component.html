@@ -11,6 +11,7 @@
                 <thumbnail omdb-query="item.title" featured-image-id="item.image"></thumbnail>
                 <div class="series-list-item-title-container">
                     <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
+                    <actors omdb-query="item.title"></actors>
                 </div>
                 <rating omdb-query="item.title"></rating>
             </li>

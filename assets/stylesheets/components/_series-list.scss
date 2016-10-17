@@ -30,11 +30,20 @@
 .series-list-item-title-container {
   float: left;
   width: 60%;
-
-  display: flex;
-  align-items: center;
 }
 
 .series-list-item-title {
-  color: $color__background-header;
+  display: block;
+
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.series-list-item-subtitle {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }

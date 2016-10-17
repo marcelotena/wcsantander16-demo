@@ -103,9 +103,20 @@ a {
 .rating-value {
 	font-size: 1.5em;
 	font-weight: $font__bold;
+	color: $color__background-header;
 }
 
 .rating-value-max {
-	font-size: 16px;
+	font-size: 0.7em;
 	font-weight: $font__regular;
+}
+
+.series-list-item-title {
+	font-size: 1.5em;
+	color: $color__background-header;
+}
+
+.series-list-item-subtitle {
+	font-size: 0.9em;
+	color: $color__background-header;
 }
