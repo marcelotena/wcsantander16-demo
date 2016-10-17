@@ -57,7 +57,8 @@ gulp.task('reload', function() {
 gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function () {
 
     browserSync.init({
-        proxy: "ngseries.dev" //modify with your local PHP server
+        proxy: "ngseries.dev", //modify with your local PHP server
+        host: "192.168.1.69"
     });
 
 

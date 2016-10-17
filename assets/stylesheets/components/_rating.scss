@@ -1,15 +1,33 @@
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .star-rating-list {
-  display: block;
-  float: left;
+  display: flex;
+
+  margin: 5px 11px;
   padding: 0;
-  margin: 15px;
   width: 125px;
 }
 
 .star-rating-list-item {
-  float: left;
   width: 25px;
   i {
     color: $color__background-header;
   }
+}
+
+.rating-value {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
+  margin: 15px 15px 0;
+}
+
+.rating-value-max {
+
 }

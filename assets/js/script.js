@@ -60,19 +60,19 @@ angular
     }]);
 var thumbnail = {
     bindings: {
-        title: '<',
-        id: '<'
+        omdbQuery: '<',
+        featuredImageId: '<'
     },
     controller: function (OmdbService, MediaService) {
 
         var ctrl = this;
         ctrl.image = '';
 
-        if (ctrl.id) {
+        if (ctrl.featuredImageId) {
 
             if(MediaService) {
                 MediaService
-                    .getMediaItem(ctrl.id)
+                    .getMediaItem(ctrl.featuredImageId)
                     .then(function(response) {
                         ctrl.image = response['sizes']['thumbnail'];
                     });
@@ -82,7 +82,7 @@ var thumbnail = {
         } else {
 
             OmdbService
-                .getImage(ctrl.title)
+                .getImage(ctrl.omdbQuery)
                 .then(function(response) {
                     ctrl.image = response;
                 });
@@ -100,7 +100,7 @@ angular
     .component('thumbnail', thumbnail);
 var rating = {
     bindings: {
-        title: '<'
+        omdbQuery: '<'
     },
     controller: function (OmdbService) {
 
@@ -108,7 +108,7 @@ var rating = {
         ctrl.stars = '';
 
         OmdbService
-            .getRating(ctrl.title)
+            .getRating(ctrl.omdbQuery)
             .then(function(response) {
                 ctrl.stars = response;
                 ctrl.rating = {
@@ -216,6 +216,30 @@ OmdbService.$inject = ["$http"];function OmdbService($http) {
 
     }
 
+    function getYear(query) {
+
+        var cleanedQuery = query.split(' ').join('+');
+
+        return $http
+            .get(API + cleanedQuery)
+            .then(function (response) {
+                return response.data['Year'];
+            });
+
+    }
+
+    function getActors(query) {
+
+        var cleanedQuery = query.split(' ').join('+');
+
+        return $http
+            .get(API + cleanedQuery)
+            .then(function (response) {
+                return response.data['Actors'];
+            });
+
+    }
+
     function getRating(query) {
 
         var cleanedQuery = query.split(' ').join('+');
@@ -229,8 +253,10 @@ OmdbService.$inject = ["$http"];function OmdbService($http) {
     }
 
     return {
-        getImage: getImage,
-        getRating: getRating
+        getImage    : getImage,
+        getYear     : getYear,
+        getActors   : getActors,
+        getRating   : getRating
     }
 }
 

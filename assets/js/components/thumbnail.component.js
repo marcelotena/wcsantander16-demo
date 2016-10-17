@@ -1,18 +1,18 @@
 var thumbnail = {
     bindings: {
-        title: '<',
-        id: '<'
+        omdbQuery: '<',
+        featuredImageId: '<'
     },
     controller: function (OmdbService, MediaService) {
 
         var ctrl = this;
         ctrl.image = '';
 
-        if (ctrl.id) {
+        if (ctrl.featuredImageId) {
 
             if(MediaService) {
                 MediaService
-                    .getMediaItem(ctrl.id)
+                    .getMediaItem(ctrl.featuredImageId)
                     .then(function(response) {
                         ctrl.image = response['sizes']['thumbnail'];
                     });
@@ -22,7 +22,7 @@ var thumbnail = {
         } else {
 
             OmdbService
-                .getImage(ctrl.title)
+                .getImage(ctrl.omdbQuery)
                 .then(function(response) {
                     ctrl.image = response;
                 });

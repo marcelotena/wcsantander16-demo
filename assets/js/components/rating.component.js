@@ -1,6 +1,6 @@
 var rating = {
     bindings: {
-        title: '<'
+        omdbQuery: '<'
     },
     controller: function (OmdbService) {
 
@@ -8,7 +8,7 @@ var rating = {
         ctrl.stars = '';
 
         OmdbService
-            .getRating(ctrl.title)
+            .getRating(ctrl.omdbQuery)
             .then(function(response) {
                 ctrl.stars = response;
                 ctrl.rating = {
