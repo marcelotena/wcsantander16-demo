@@ -58,6 +58,39 @@ angular
 
         $urlRouterProvider.otherwise('/');
     }]);
+var detail = {
+    bindings: {
+        item: '<'
+    },
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/detail/detail.component.html',
+    controller: function() {
+
+    }
+};
+
+angular
+    .module('home')
+    .component('detail', detail)
+    .config(["$stateProvider", "$locationProvider", function ($stateProvider, $locationProvider) {
+
+        $locationProvider.html5Mode(true);
+
+        $stateProvider
+            .state('home.detail', {
+                url: '^/serie/:slug',
+                component: 'detail',
+                params: {
+                    slug: null
+                },
+                resolve: {
+                    item: ["SeriesService", "$transition$", function(SeriesService, $transition$) {
+                        var id = $transition$.params().id;
+                        if (!id) return;
+                        return SeriesService.getSerie(id);
+                    }]
+                }
+            });
+    }]);
 var thumbnail = {
     bindings: {
         omdbQuery: '<',
@@ -177,6 +210,37 @@ SeriesService.$inject = ["$http"];function SeriesService($http) {
 
     }
 
+    function getSerie(id) {
+
+        return $http
+            .get(API + '/' + id)
+            .then(function (response) {
+                var totalPosts = response.headers('X-WP-Total');
+                return processSerie(response.data, totalPosts);
+            });
+
+    }
+
+    function processSerie(item, totalPosts) {
+
+        var processedItem;
+
+        processedItem = {
+            id              : item.id,
+            date            : item.date,
+            link            : item.link,
+            title           : item.title.rendered,
+            spanishTitle    : item.acf['titulo_traducido'],
+            slug            : item.slug,
+            content         : item.content.rendered,
+            image           : item['featured_media'],
+            totalPosts      : totalPosts
+        };
+
+        return processedItem;
+
+    }
+
     function processSeriesList(data, totalPages) {
 
         return data.map(function (item) {
@@ -200,6 +264,8 @@ SeriesService.$inject = ["$http"];function SeriesService($http) {
 
     }
 
+
+
     // getImageThumbnail when using the plugin Better REST Featured Images
     function getImageThumbnail(id) {
 
@@ -212,8 +278,9 @@ SeriesService.$inject = ["$http"];function SeriesService($http) {
     }
 
     return {
-        getSeries: getSeries,
-        getImageThumbnail: getImageThumbnail
+        getSeries           : getSeries,
+        getSerie            : getSerie,
+        getImageThumbnail   : getImageThumbnail
     }
 }
 

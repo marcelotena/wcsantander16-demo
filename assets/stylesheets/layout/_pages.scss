@@ -4,8 +4,21 @@
 }
 
 .view-inner-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
 	background: $color__background-header;
 	color: white;
 	min-height: 80px;
 	padding: 10px 30px;
+}
+
+.view-title {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.view-subtitle {
+	margin: 0;
 }
