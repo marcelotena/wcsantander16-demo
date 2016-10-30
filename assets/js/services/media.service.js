@@ -46,5 +46,5 @@ function MediaService($http) {
 
 
 angular
-    .module('home')
+    .module('app')
     .factory('MediaService', MediaService);

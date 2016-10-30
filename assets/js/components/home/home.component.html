@@ -6,20 +6,25 @@
             <p class="view-subtitle"></p>
         </div>
         <div class="view-inner-header-toolbar">
-            <input type="text" ng-model="$ctrl.textFilter">
+
         </div>
     </div>
 
     <div class="view-inner-content">
         <ul class="series-list" infinite-scroll="$ctrl.loadMorePages()" infinite-scroll-disabled="$ctrl.busy" infinite-scroll-distance="0">
             <li class="series-list-item" ng-repeat="item in $ctrl.list | filter: {'title': $ctrl.textFilter}" ng-class="{'series-list-item-active': ($ctrl.activeClass[item.id] === true)}">
-                <thumbnail omdb-query="item.title" featured-image-id="item.image"></thumbnail>
-                <div class="series-list-item-title-container">
-                    <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
-                    <actors omdb-query="item.title"></actors>
+                <div class="series-list-item-header"
+                     ng-class="{'series-list-item-active': $ctrl.activeItem.id === item.id}"
+                     ng-click="$ctrl.activeItem = item;">
+                    <thumbnail omdb-query="item.title" featured-image-id="item.image"></thumbnail>
+                    <div class="series-list-item-title-container">
+                        <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
+                        <actors omdb-query="item.title"></actors>
+                    </div>
+                    <rating omdb-query="item.title"></rating>
                 </div>
-                <rating omdb-query="item.title"></rating>
-                <div ui-view></div>
+
+                <detail active-item="$ctrl.activeItem" item="item"></detail>
             </li>
             <li class="series-list-loading" ng-show="$ctrl.busy">CARGANDO...</li>
         </ul>

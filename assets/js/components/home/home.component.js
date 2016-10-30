@@ -8,6 +8,7 @@ var home = {
         var currentPage = 2;
         var pageLimit = 5;
         ctrl.busy = false;
+        ctrl.activeItem = 0;
 
         ctrl.loadMorePages = function () {
 
@@ -30,7 +31,7 @@ var home = {
 };
 
 angular
-    .module('home')
+    .module('app')
     .component('home', home)
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

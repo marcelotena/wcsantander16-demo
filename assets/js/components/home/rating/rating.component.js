@@ -24,7 +24,7 @@ var rating = {
         }
 
     },
-    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/rating.component.html'
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/home/rating/rating.component.html'
 };
 
 angular

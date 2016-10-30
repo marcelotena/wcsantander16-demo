@@ -5,7 +5,6 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
-var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('sass', function () {
     return gulp.src('assets/stylesheets/*.scss')
@@ -24,8 +23,7 @@ gulp.task('concat-dependencies', function () {
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('dependencies.js'))
-        .pipe(gulp.dest('assets/js/'))
-        .pipe(uglify('dependencies.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('assets/js/'))
         .pipe(sourcemaps.write('./'))
 });
@@ -33,23 +31,21 @@ gulp.task('concat-dependencies', function () {
 gulp.task('concat-scripts', function () {
     return gulp.src([
         'assets/js/app.js',
-        'assets/js/components/home/home.js',
         'assets/js/components/home/home.component.js',
-        'assets/js/components/detail/detail.component.js',
-        'assets/js/components/thumbnail.component.js',
-        'assets/js/components/actors.component.js',
-        'assets/js/components/rating.component.js',
+        'assets/js/components/home/detail/detail.component.js',
+        'assets/js/components/home/thumbnail/thumbnail.component.js',
+        'assets/js/components/home/actors/actors.component.js',
+        'assets/js/components/home/rating/rating.component.js',
+        'assets/js/components/about/about.component.js',
         'assets/js/services/series.service.js',
         'assets/js/services/omdb.service.js',
         'assets/js/services/media.service.js'
     ])
         .pipe(sourcemaps.init())
-        .pipe(ngAnnotate())
         .pipe(concat('script.js'))
+        .pipe(uglify({mangle: false}))
+        .pipe(sourcemaps.write("."))
         .pipe(gulp.dest('assets/js/'))
-        //.pipe(uglify('script.js'))
-        .pipe(gulp.dest('assets/js/'))
-        .pipe(sourcemaps.write('./'))
 });
 
 gulp.task('reload', function() {
@@ -68,6 +64,7 @@ gulp.task('default', ['sass', 'concat-dependencies', 'concat-scripts'], function
     gulp.watch([
         "assets/js/**/*.js",
         "assets/js/**/**/*.js",
+        "assets/js/**/**/**/*.js",
         "assets/js/*.js",
         "./*.html",
         "assets/js/**/*.html",

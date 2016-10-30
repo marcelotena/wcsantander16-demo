@@ -98,5 +98,5 @@ function SeriesService($http) {
 
 
 angular
-    .module('home')
+    .module('app')
     .factory('SeriesService', SeriesService);

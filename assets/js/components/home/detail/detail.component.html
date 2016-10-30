@@ -1,0 +1,3 @@
+<div class="detail-component-panel" ng-class="{'detail-component-panel-active' : $ctrl.item.id === $ctrl.activeItem.id}">
+    <p ng-bind-html="$ctrl.item.content" ng-show="$ctrl.activeItem.id === $ctrl.item.id" class="detail-component-panel-content"></p>
+</div>

@@ -3,8 +3,21 @@
   margin-left: 0;
 }
 
+.series-list-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  background: white;
+  transition: all 0.3s ease-in-out;
+
+  cursor: pointer;
+}
+
 .series-list-item {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
@@ -16,7 +29,9 @@
   &-active {
     background: $color__background-header;
 
-    .series-list-item-title {
+    .series-list-item-title,
+    .series-list-item-subtitle,
+    .rating-value {
       color: white;
     }
 
@@ -25,6 +40,7 @@
         color: $color__star-darkbg;
       }
     }
+
   }
 }
 

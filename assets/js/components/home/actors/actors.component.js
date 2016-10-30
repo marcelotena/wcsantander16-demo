@@ -14,7 +14,7 @@ var actors = {
             });
 
     },
-    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/actors.component.html'
+    templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/home/actors/actors.component.html'
 };
 
 angular
