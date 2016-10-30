@@ -10,5 +10,5 @@ var detail = {
 };
 
 angular
-    .module('app')
+    .module('home')
     .component('detail', detail);

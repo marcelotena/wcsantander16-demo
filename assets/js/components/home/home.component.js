@@ -31,7 +31,7 @@ var home = {
 };
 
 angular
-    .module('app')
+    .module('home')
     .component('home', home)
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

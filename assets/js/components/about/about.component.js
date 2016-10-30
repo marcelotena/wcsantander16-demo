@@ -9,7 +9,7 @@ var about = {
 };
 
 angular
-    .module('app')
+    .module('about')
     .component('about', about)
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

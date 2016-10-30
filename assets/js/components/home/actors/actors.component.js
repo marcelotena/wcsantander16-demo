@@ -18,5 +18,5 @@ var actors = {
 };
 
 angular
-    .module('app')
+    .module('home')
     .component('actors', actors);

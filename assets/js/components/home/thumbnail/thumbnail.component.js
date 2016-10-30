@@ -36,5 +36,5 @@ var thumbnail = {
 
 
 angular
-    .module('app')
+    .module('home')
     .component('thumbnail', thumbnail);

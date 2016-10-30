@@ -31,11 +31,13 @@ gulp.task('concat-dependencies', function () {
 gulp.task('concat-scripts', function () {
     return gulp.src([
         'assets/js/app.js',
+        'assets/js/components/home/home.js',
         'assets/js/components/home/home.component.js',
         'assets/js/components/home/detail/detail.component.js',
         'assets/js/components/home/thumbnail/thumbnail.component.js',
         'assets/js/components/home/actors/actors.component.js',
         'assets/js/components/home/rating/rating.component.js',
+        'assets/js/components/about/about.js',
         'assets/js/components/about/about.component.js',
         'assets/js/services/series.service.js',
         'assets/js/services/omdb.service.js',

@@ -28,5 +28,5 @@ var rating = {
 };
 
 angular
-    .module('app')
+    .module('home')
     .component('rating', rating);
