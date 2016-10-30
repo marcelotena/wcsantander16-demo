@@ -2,7 +2,7 @@
 
     <div class="view-inner-header">
         <div class="view-inner-header-title">
-            <h2 class="view-title">Sobre esta web</h2>
+            <h2 class="view-title" ng-bind-html="$ctrl.pageContent.title.rendered"></h2>
             <p class="view-subtitle"></p>
         </div>
         <div class="view-inner-header-toolbar">
@@ -11,7 +11,9 @@
     </div>
 
     <div class="view-inner-content">
+        <div class="page-content" ng-bind-html="$ctrl.pageContent.content.rendered">
 
+        </div>
     </div>
 
 </div>

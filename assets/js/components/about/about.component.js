@@ -1,6 +1,6 @@
 var about = {
     bindings: {
-        page: '<'
+        pageContent: '<'
     },
     templateUrl: 'wp-content/themes/wp_ng_spa/assets/js/components/about/about.component.html',
     controller: function() {
@@ -17,11 +17,11 @@ angular
 
         $stateProvider
             .state('about', {
-                url: '/about',
+                url: '/sobre-esta-web/',
                 component: 'about',
                 resolve: {
-                    list: function(PagesService) {
-                        return PagesService.getPage('about');
+                    pageContent: function(PagesService) {
+                        return PagesService.getPage('sobre-esta-web');
                     }
                 }
             });

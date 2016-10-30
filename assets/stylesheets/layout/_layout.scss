@@ -33,6 +33,10 @@ body {
   background: $color__background-body;
   min-height: 600px;
 
+  @media screen and (max-width: 800px) {
+    padding-top: 0;
+  }
+
   @media screen and (min-width: 768px) {
     min-height: 850px;
   }
