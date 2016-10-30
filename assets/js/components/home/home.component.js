@@ -27,6 +27,16 @@ var home = {
             }
 
         };
+
+        ctrl.selectItem = function (item) {
+
+            if (!ctrl.activeItem || ctrl.activeItem !== item) {
+                ctrl.activeItem = item;
+            } else {
+                ctrl.activeItem = 0;
+            }
+
+        };
     }
 };
 

@@ -15,7 +15,7 @@
             <li class="series-list-item" ng-repeat="item in $ctrl.list | filter: {'title': $ctrl.textFilter}" ng-class="{'series-list-item-active': ($ctrl.activeClass[item.id] === true)}">
                 <div class="series-list-item-header"
                      ng-class="{'series-list-item-active': $ctrl.activeItem.id === item.id}"
-                     ng-click="$ctrl.activeItem = item;">
+                     ng-click="$ctrl.selectItem(item)">
                     <thumbnail omdb-query="item.title" featured-image-id="item.image"></thumbnail>
                     <div class="series-list-item-title-container">
                         <h3 class="series-list-item-title" ng-bind-html="item.title"></h3>
