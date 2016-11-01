@@ -4,6 +4,11 @@
   display: block;
   float: left;
   margin-right: 30px;
+
+  @media screen and (max-width: 548px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .thumbnail-image {

@@ -7,6 +7,7 @@
 
 .star-rating-list {
   display: flex;
+  justify-content: flex-end;
 
   margin: 0 11px;
   padding: 0;
@@ -15,6 +16,11 @@
 
 .star-rating-list-item {
   width: 25px;
+
+  @media screen and (max-width: 548px) {
+    width: 20px;
+  }
+
   i {
     color: $color__background-header;
   }
