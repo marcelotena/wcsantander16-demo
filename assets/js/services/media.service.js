@@ -16,6 +16,26 @@ function MediaService($http) {
 
             var processedItem;
 
+            if (item['media_details'].sizes) {
+                var mediaBase = item['media_details'].sizes;
+
+                if (mediaBase.thumbnail) {
+                    var thumbnailImage = mediaBase.thumbnail['source_url'];
+                }
+
+                if (mediaBase.medium) {
+                    var mediumImage = mediaBase.medium['source_url'];
+                }
+
+                if (mediaBase['medium_large']) {
+                    var mediumLargeImage = mediaBase['medium_large']['source_url'];
+                }
+
+                if (mediaBase.large) {
+                    var largeImage = mediaBase.large['source_url'];
+                }
+            }
+
             processedItem = {
                 id              : item.id,
                 date            : item.date,
@@ -26,10 +46,10 @@ function MediaService($http) {
                 slug            : item.slug,
                 type            : item['media_type'],
                 sizes           : {
-                    thumbnail   : item['media_details'].sizes['thumbnail']['source_url'],
-                    medium      : item['media_details'].sizes['medium']['source_url'],
-                    mediumLarge : item['media_details'].sizes['medium_large']['source_url'],
-                    large       : item['media_details'].sizes['large']['source_url']
+                    thumbnail   : thumbnailImage,
+                    medium      : mediumImage,
+                    mediumLarge : mediumLargeImage,
+                    large       : largeImage
                 }
             };
 
