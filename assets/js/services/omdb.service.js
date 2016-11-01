@@ -1,6 +1,6 @@
 function OmdbService($http) {
 
-    var API = 'http://www.omdbapi.com/?t=';
+    var API = 'https://www.omdbapi.com/?t=';
 
     function getImage(query) {
 
