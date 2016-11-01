@@ -73,8 +73,36 @@
 }
 
 @media screen and (max-width: 37.5em) {
+	.main-navigation {
+		width: 100%!important;
+	}
+
 	.main-navigation ul {
 		width: 100%;
 		margin-top: 25px;
+	}
+
+	.main-navigation li {
+		width: 50%;
+		padding: 0 5px;
+		text-align: center;
+	}
+
+	.main-navigation a {
+		background: darken($color__background-overlay, 12%);
+		border: 1px solid darken($color__background-overlay, 20%);
+		color: white;
+		padding: 10px 15px;
+		font-size: 0.75em;
+
+		&:visited,
+		&:active,
+		&:focus {
+			color: white;
+		}
+
+		&:active {
+			background: lighten($color__background-overlay, 30%);
+		}
 	}
 }

@@ -79,6 +79,18 @@ blockquote, q {
 	}
 }
 
+@media screen and (max-width: 548px) {
+	.site-title {
+		font-size: 1em;
+	}
+	.site-description {
+		font-size: 0.8em;
+	}
+	.view-title {
+		font-size: 1.2em;
+	}
+}
+
 a {
 	text-decoration: none;
 }

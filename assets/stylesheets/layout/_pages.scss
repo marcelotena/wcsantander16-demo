@@ -17,6 +17,10 @@
 	color: white;
 	min-height: 80px;
 	padding: 10px 15px;
+
+	@media screen and (max-width: 548px) {
+		min-height: 50px;
+	}
 }
 
 .view-title {
