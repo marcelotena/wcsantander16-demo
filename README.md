@@ -2,8 +2,10 @@
 WordPress theme - Single Page Application using AngularJS and the WP REST API.
 
 ## 1. THEME Installation
+
 1.0. Requirements
 - Plugin: https://es.wordpress.org/plugins/rest-api/
+
 1.1. Clone repository to your themes folder
 - Navigate to: ../wp-content/themes/ in your WordPress installation.
 - Execute: git clone https://github.com/marcelotena/wcsantander16-demo.git
@@ -11,6 +13,7 @@ WordPress theme - Single Page Application using AngularJS and the WP REST API.
 1.2. Rename folder "wcsantander16-demo" to "wp_ng_spa"
 
 ## 2. DEV Installation
+
 2.0. Requirements
 - NodeJS: https://nodejs.org
 - Gulp CLI:
