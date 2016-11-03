@@ -42,7 +42,6 @@ function MediaService($http) {
                 link            : item.link,
                 title           : item.title.rendered,
                 alt             : item['alt_text'],
-                spanishTitle    : item.acf['titulo_traducido'],
                 slug            : item.slug,
                 type            : item['media_type'],
                 sizes           : {

@@ -155,27 +155,3 @@ function my_rewrite_flush() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'my_rewrite_flush' );
-
-
-/**
-* Append 'acf' key to REST API output of all public post types
-*/
-add_action( 'rest_api_init', 'slug_register_acf' );
-
-function slug_register_acf() {
-	$post_types = get_post_types(['public'=>true], 'names');
-	foreach ($post_types as $type) {
-		register_api_field( $type,
-			'acf',
-			array(
-				'get_callback'    => 'slug_get_acf',
-				'update_callback' => null,
-				'schema'          => null,
-			)
-		);
-	}
-}
-
-function slug_get_acf( $object, $field_name, $request ) {
-	return get_fields($object[ 'id' ]);
-}

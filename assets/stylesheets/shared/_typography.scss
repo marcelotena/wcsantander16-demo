@@ -154,6 +154,10 @@ a {
 	@media screen and (max-width: 548px) {
 		font-size: 1.1em;
 	}
+
+	@media screen and (max-width: 375px) {
+		font-size: 1em;
+	}
 }
 
 .series-list-item-subtitle {
